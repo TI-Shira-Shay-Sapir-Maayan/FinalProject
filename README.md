@@ -17,7 +17,7 @@ The code for collecting **CSI** data on the **ESP32-S3** was provided by Espress
 
 ## Phase 3: Graphical Representation of CSI Features
 In the third phase, we are focused on visualizing the changes in various CSI features over time. Specifically, we are creating graphs that represent the features of CSI data (like the Amplitude & Phase, RSSI, rate, timestamp and more). 
-all the main code are on file "grapes of CSI data". 
+all the main code are on file **"graps of CSI data"**. 
 
 These visualizations help us better understand the behavior of the wireless environment and the dynamic properties of the channel.
 
