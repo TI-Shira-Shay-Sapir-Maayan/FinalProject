@@ -15,6 +15,12 @@ In the second phase, we advanced to collecting **CSI (Channel State Information)
 
 The code for collecting **CSI** data on the **ESP32-S3** was provided by Espressif. We ran the provided code on the ESP32-S3 board, and based on that code, we modified and adapted it to make it compatible with the **ESP32-C6** board. These boards were then used to gather CSI data for further analysis and exploration.
 
+## Phase 3: Graphical Representation of CSI Features
+In the third phase, we are focused on visualizing the changes in various CSI features over time. Specifically, we are creating graphs that represent the features of CSI data (like the Amplitude & Phase, RSSI, rate, timestamp and more). 
+all the main code are on file "grapes of CSI data". 
+
+These visualizations help us better understand the behavior of the wireless environment and the dynamic properties of the channel.
+
 ## Code Files and Setup
 
 For the current phase of the project, we have only included the `main` files in the repository. To run the code successfully, you will need to add additional files and configurations.
