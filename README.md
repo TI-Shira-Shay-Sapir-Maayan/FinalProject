@@ -17,18 +17,18 @@ The code for collecting CSI data on the ESP32-S3 was provided by Espressif. We r
 
 Additionally, we printed the collected data from the ESP32-C6 board and visualized it in tables. One table represented all the variables, while a second table focused specifically on the CSI data. This allowed for a clearer understanding of the data and facilitated the exploration of the CSI features.
 
-You can find the code for this phase in the "Phase 2" folder.
+You can find the main code for this phase in the "Phase 2" folder.
 
 ## Phase 3: Visualizing CSI Data Features
 In this phase, the focus was on visualizing various features of the CSI (Channel State Information) data collected over time. We created detailed graphs to represent key features such as Amplitude & Phase, RSSI, rate, timestamp, and more. These visualizations provided a clearer understanding of how the wireless environment behaves and the dynamic changes within the channel, allowing for a more thorough analysis of the collected data.
 
-all the main code are on file **"Graps of CSI data"**. 
+You can find the main code for this phase in the "Phase 3" folder.
 
 ## Phase 4: Integrating Graphs and Heatmap Analysis
 
 Building on the visualizations from Phase 3, we combined all the graphs into a single comprehensive display, enabling real-time monitoring of all the data points in one view. In addition to the graphs, we introduced a heatmap to represent changes in amplitude and phase within the CSI data. The primary goal of this phase was to identify patterns in the CSI data and correlate them with changes in the physical environment, such as room layout and obstacles. By conducting this analysis, we aim to improve the understanding of how physical factors influence the wireless channel, helping to optimize wireless performance in real-world settings.
 
-all the main code are on file **"Merging all graphs of variables and Heatmap Analysis"**. 
+You can find the main code for this phase in the "Phase 4" folder.
 
 ## Code Files and Setup
 
