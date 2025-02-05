@@ -15,14 +15,14 @@ In the second phase, we advanced to collecting **CSI (Channel State Information)
 
 The code for collecting **CSI** data on the **ESP32-S3** was provided by Espressif. We ran the provided code on the ESP32-S3 board, and based on that code, we modified and adapted it to make it compatible with the **ESP32-C6** board. These boards were then used to gather CSI data for further analysis and exploration.
 
-## Phase 3: Graphical Representation of CSI Features
-In the third phase, we are focused on visualizing the changes in various CSI features over time. Specifically, we are creating graphs that represent the features of CSI data (like the Amplitude & Phase, RSSI, rate, timestamp and more). 
+## Phase 3: Visualizing CSI Data Features
+In this phase, the focus was on visualizing various features of the CSI (Channel State Information) data collected over time. We created detailed graphs to represent key features such as Amplitude & Phase, RSSI, rate, timestamp, and more. These visualizations provided a clearer understanding of how the wireless environment behaves and the dynamic changes within the channel, allowing for a more thorough analysis of the collected data.
 all the main code are on file **"Graps of CSI data"**. 
 
-These visualizations help us better understand the behavior of the wireless environment and the dynamic properties of the channel.
+## Phase 4: Integrating Graphs and Heatmap Analysis
 
-## Phase 4: Merging Graphs and Analyzing CSI Data
-In this phase, we merged all the graphs into a single file that displays all the data simultaneously. Additionally, we created a heatmap for the CSI (Channel State Information) data, illustrating changes in amplitude and phase. The objective of this step was to identify changes related to CSI and compare them with changes that are related to the physical environment of the room. By analyzing the changes in CSI data in relation to external factors in the room, we aim to better understand the dynamic behavior of the wireless channel and optimize it for the environment we are working in.
+Building on the visualizations from Phase 3, we combined all the graphs into a single comprehensive display, enabling real-time monitoring of all the data points in one view. In addition to the graphs, we introduced a heatmap to represent changes in amplitude and phase within the CSI data. The primary goal of this phase was to identify patterns in the CSI data and correlate them with changes in the physical environment, such as room layout and obstacles. By conducting this analysis, we aim to improve the understanding of how physical factors influence the wireless channel, helping to optimize wireless performance in real-world settings.
+all the main code are on file **"Merging all graphs of variables and Heatmap Analysis"**. 
 
 ## Code Files and Setup
 
