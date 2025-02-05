@@ -15,6 +15,7 @@ In the second phase, we advanced to collecting CSI (Channel State Information) d
 
 - **ESP32-S3**
 - **ESP32-C6**
+
 The code for collecting CSI data on the ESP32-S3 was provided by Espressif. We ran the provided code on the ESP32-S3 board, and based on that code, we modified and adapted it to make it compatible with the ESP32-C6 board. These boards were then used to gather CSI data for further analysis and exploration.
 
 Additionally, we printed the collected data from the ESP32-C6 board and visualized it in tables. One table represented all the variables, while a second table focused specifically on the CSI data. This allowed for a clearer understanding of the data and facilitated the exploration of the CSI features.
