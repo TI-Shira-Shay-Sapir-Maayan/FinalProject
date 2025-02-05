@@ -21,6 +21,9 @@ all the main code are on file **"Graps of CSI data"**.
 
 These visualizations help us better understand the behavior of the wireless environment and the dynamic properties of the channel.
 
+## Phase 4: Merging Graphs and Analyzing CSI Data
+In this phase, we merged all the graphs into a single file that displays all the data simultaneously. Additionally, we created a heatmap for the CSI (Channel State Information) data, illustrating changes in amplitude and phase. The objective of this step was to identify changes related to CSI and compare them with changes that are related to the physical environment of the room. By analyzing the changes in CSI data in relation to external factors in the room, we aim to better understand the dynamic behavior of the wireless channel and optimize it for the environment we are working in.
+
 ## Code Files and Setup
 
 For the current phase of the project, we have only included the `main` files in the repository. To run the code successfully, you will need to add additional files and configurations.
