@@ -35,7 +35,7 @@ You can find the main code for this phase in the "**Stage 4**" folder.
 
 ## Code Files and Setup
 
-For the current phase of the project, we have only included the `main` files in the repository. To run the code successfully, you will need to add additional files and configurations.
+For the every phase of the project, we have only included the `main` files in the repository. To run the code successfully, you will need to add additional files and configurations.
 
 ### Required Files and Configurations
 
