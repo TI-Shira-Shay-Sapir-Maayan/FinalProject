@@ -7,9 +7,10 @@ BAUD_RATE = 115200
 TIMEOUT = 5
 
 def read_and_plot_rate(port, baud_rate, timeout):
+    
     ser = serial.Serial(port, baud_rate, timeout=timeout)
     rate_data = []  # רשימה לאחסון נתוני ה-Rate
-    
+
     # הגדרת גרף
     plt.ion()  # מצב אינטראקטיבי
     fig, ax = plt.subplots()
