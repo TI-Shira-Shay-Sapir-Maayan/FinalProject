@@ -8,25 +8,25 @@ PORT = "COM10"  # עדכון הפורט
 BAUD_RATE = 115200
 TIMEOUT = 5
 
-# דפוס רגולרי לחילוץ פאזה ואמפליטודה מתוך המידע
+# דפוס רגולרי לחילוץ פאזה מתוך המידע
 PATTERN = re.compile(r"Subcarrier (\d+): Amplitude = ([\d.]+), Phase = ([\d.-]+)")
 NUM_SUBCARRIERS = 64  # מספר ה-subcarriers
 
 def read_and_plot_heatmap(port, baud_rate, timeout):
     ser = serial.Serial(port, baud_rate, timeout=timeout)
     
-    # מטריצה שתשמור על 30 שורות עבור חלון הזזה, 64 עמודות (לכל subcarrier)
+    # מטריצות לזיכרון של 30 דגימות זמן עבור כל 64 ה-subcarriers
     window_size = 30
-    data_matrix = np.zeros((window_size, NUM_SUBCARRIERS))  # שורות = זמן, עמודות = subcarriers
+    phase_matrix = np.zeros((window_size, NUM_SUBCARRIERS))  # שמירת הפאזה בכל זמן עבור כל ה-subcarriers
     
-    # יצירת הגרף
+    # יצירת הגרפים
     plt.ion()
-    fig, ax = plt.subplots(figsize=(12, 8))  # גרף בגודל 12x8 אינצ'ים
-    heatmap = None  # משתנה לאחסון טבלת החום
+    fig, ax = plt.subplots(figsize=(14, 8))  # גרף בגודל 14x8 אינצ'ים
     
-    subcarrier_data = np.zeros(NUM_SUBCARRIERS)  # רשימה שתאכסן את הנתונים עבור כל subcarrier
+    phase_heatmap = None  # משתנה לאחסון המפה החמה של הפאזה
+    
+    subcarrier_data_phase = np.zeros(NUM_SUBCARRIERS)  # רשימה שתאכסן את הנתונים עבור כל subcarrier
     num_received = 0  # סופר את מספר ה-subcarriers שהתקבלו בעבור האיטרציה הנוכחית
-    max_amplitude = 1  # אתחול של מקסימום האמפליטודה
     
     try:
         while True:
@@ -36,46 +36,38 @@ def read_and_plot_heatmap(port, baud_rate, timeout):
             if match:
                 try:
                     subcarrier = int(match.group(1))  # חילוץ ה-subcarrier
-                    amplitude = float(match.group(2))  # חילוץ האמפליטודה
+                    amplitude = float(match.group(2))  # חילוץ האמפליטודה (לא בשימוש כאן)
                     phase = float(match.group(3))  # חילוץ הפאזה
                     
-                    # נרמול של האמפליטודה
-                    if amplitude > max_amplitude:
-                        max_amplitude = amplitude  # עדכון המקסימום אם נמצא ערך גבוה יותר
-                    normalized_amplitude = amplitude / max_amplitude  # נרמול האמפליטודה
+                    # נרמול של הפאזה
+                    normalized_phase = np.unwrap([phase])[0]  # נרמול הפאזה בין -pi ל-pi
                     
-                    # נרמול של הפאזה לטווח [0, 1]
-                    normalized_phase = (phase + np.pi) / (2 * np.pi)  # נרמול ל-[0, 1]
-                    
-                    # חישוב ערך משולב לכל subcarrier (למשל ניתן לשלב את הפאזה והאמפליטודה יחד)
-                    combined_value = normalized_phase  # רק הפאזה
-                    
-                    # שמירת הערך המשולב במערך
-                    subcarrier_data[subcarrier] = combined_value
+                    # שמירת הפאזה במערך
+                    subcarrier_data_phase[subcarrier] = normalized_phase
                     num_received += 1  # הגדלת הסופר
                     
                     # אם התקבלו כל 64 ה-subcarriers
                     if num_received == NUM_SUBCARRIERS:
                         # הזזת כל הנתונים שורה אחת למעלה
-                        data_matrix[1:, :] = data_matrix[:-1, :]  # הזזת שורות למעלה, בלי שינוי בנתונים
+                        phase_matrix[1:, :] = phase_matrix[:-1, :]  # הזזת שורות למעלה, בלי שינוי בנתונים
                         
                         # הוספת השורה החדשה (הנתונים החדשים)
-                        data_matrix[0, :] = subcarrier_data  # הוספת נתוני הפאזה והאמפליטודה בשורה החדשה
+                        phase_matrix[0, :] = subcarrier_data_phase  # הוספת נתוני הפאזה בשורה החדשה
                         
                         # יצירת או עדכון המפה החמה
-                        if heatmap is None:
-                            heatmap = ax.imshow(data_matrix, aspect='auto', cmap='hot_r', interpolation='nearest')  # cmap='hot_r' להפוך את הצבעים
-                            plt.colorbar(heatmap, label='Normalized Phase')  # הוספת סרגל צבעים
+                        if phase_heatmap is None:
+                            phase_heatmap = ax.imshow(phase_matrix, aspect='auto', cmap='coolwarm', interpolation='nearest')
+                            plt.colorbar(phase_heatmap, label='Phase (radians)')  # הוספת סרגל צבעים
                         else:
-                            heatmap.set_data(data_matrix)  # עדכון המפה
-                            heatmap.set_clim(vmin=0, vmax=1)  # עדכון טווח הצבעים ל- [0, 1]
+                            phase_heatmap.set_data(phase_matrix)  # עדכון המפה
+                            phase_heatmap.set_clim(vmin=-np.pi, vmax=np.pi)  # עדכון טווח הצבעים ל- [-pi, pi]
                         
                         # הצגת המפה
                         plt.draw()
                         plt.pause(0.1)  # תהליך בזמן אמת
                         
                         # אפס את הנתונים והסופר עבור האיטרציה הבאה
-                        subcarrier_data = np.zeros(NUM_SUBCARRIERS)
+                        subcarrier_data_phase = np.zeros(NUM_SUBCARRIERS)
                         num_received = 0
                         
                 except ValueError as e:
