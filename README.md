@@ -42,6 +42,8 @@ In the final phase, we focused on collecting CSI data under different environmen
 
 3. No people in the room – to establish a baseline for comparison.
 
+Additionally, we implemented a sampling rate measurement to determine how many CSI samples were collected per second. This allowed us to assess the stability and efficiency of the data collection process, ensuring that the system operates at an optimal rate.
+
 You can find the main code for this phase in the "**Stage 5**" folder.
 
 
