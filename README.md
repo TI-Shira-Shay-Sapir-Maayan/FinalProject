@@ -33,6 +33,18 @@ Building on the visualizations from Phase 3, we combined all the graphs into a s
 
 You can find the main code for this phase in the "**Stage 4**" folder.
 
+## Phase 5: CSI Data Collection in Different Scenarios
+In the final phase, we focused on collecting CSI data under different environmental conditions to analyze how movement and occupancy affect the wireless channel. We performed measurements in three different scenarios:
+
+1. People moving in the room – to observe dynamic changes in the wireless signal.
+
+2. People standing still in the room – to analyze the effect of static objects on the CSI data.
+
+3. No people in the room – to establish a baseline for comparison.
+
+You can find the main code for this phase in the "**Stage 5**" folder.
+
+
 ## Code Files and Setup
 
 For the every phase of the project, we have only included the `main` files in the repository. To run the code successfully, you will need to add additional files and configurations.
