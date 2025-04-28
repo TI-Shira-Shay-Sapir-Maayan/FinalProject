@@ -39,4 +39,4 @@ if __name__ == "__main__":
     train_and_save(AmplitudePhaseModel, "amplitude_phase")
     train_and_save(FullCSIFeatureModel, "full_csi")
 
-    print("\n🎉 סיום אימון ושמירה של שלושת המודלים!")
+    print("\n🎉 finish the training and the results saved!")

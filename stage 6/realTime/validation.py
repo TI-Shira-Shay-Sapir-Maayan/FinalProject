@@ -41,4 +41,4 @@ if __name__ == "__main__":
     plt.savefig("all_models_results.png")
     plt.show()
 
-    print("\n🎉 ניתוח תוצאות נשמר כ-all_models_results.png")
+    print("\n🎉 the models saved as an : all_models_results.png")
